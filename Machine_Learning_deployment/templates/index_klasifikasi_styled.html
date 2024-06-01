@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .prediction h2 {
+            color: #4CAF50;
+        }
+
+        .error {
+            margin-top: 20px;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iris Flower Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="sepal_length">Sepal Length:</label>
+        <input type="text" id="sepal_length" name="sepal_length" required><br><br>
+        
+        <label for="sepal_width">Sepal Width:</label>
+        <input type="text" id="sepal_width" name="sepal_width" required><br><br>
+        
+        <label for="petal_length">Petal Length:</label>
+        <input type="text" id="petal_length" name="petal_length" required><br><br>
+        
+        <label for="petal_width">Petal Width:</label>
+        <input type="text" id="petal_width" name="petal_width" required><br><br>
+        
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <div class="prediction">
+            <h2>Prediction Result</h2>
+            <p>Prediction: {{ result.prediction }}</p>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error">
+            <h2>Error</h2>
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>

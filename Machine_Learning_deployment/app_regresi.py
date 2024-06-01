@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the pre-trained model
-model = joblib.load('boston_housing_model.pkl')
+model = joblib.load('model_regresi.pkl')
 
 # Define the expected feature names in the correct order
 feature_names = [
